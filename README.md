@@ -11,3 +11,11 @@
 - What is the use of "-g" while npm install
 - Difference between caret and tilde (^ vs ~)
 
+# EP-02 -- 
+- Initilize  git
+- .gitignore
+- Create a remote repo on github
+- Push all code to remote location
+- Play with route extensions - /hello, /hello/2, /xyz
+- Order of the routes matter a lot
+
