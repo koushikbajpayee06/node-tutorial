@@ -1,4 +1,4 @@
-# EP-01
+# Day-03
 - Create a repository
 - Initilizethe repository
 - node_modules, package.json, package-lock.json
@@ -11,7 +11,7 @@
 - What is the use of "-g" while npm install
 - Difference between caret and tilde (^ vs ~)
 
-# EP-02 -- 
+# Day-04 
 - Initilize  git
 - .gitignore
 - Create a remote repo on github
@@ -20,9 +20,7 @@
 - Order of the routes matter a lot
 - Install Postman app and make a workspace/collection > test API call
 
-
-
-# EP-03
+# Day-05
 - Multiple Route Handlers - Play with the code
 - next()
 - next function and errors along with res.send()
@@ -33,6 +31,13 @@
 - Write a dummy auth middleware for admin
 - Write a dummy auth middleware for all user routes, except /user/login
 - Error handling using app.use('/',(err,req,res,next) ={});
+
+# Day-06
+- koushikbajpayee06@gmail.com(MongoDB Connection)
+- Create a free cluster on MongoDB official website(Mongo Atlas)
+- Install mongoose library
+- Connect your application to the Database <"connection-url">/devTinder
+- call the connectDB function and connect to database before starting application on 7777
 
 
 

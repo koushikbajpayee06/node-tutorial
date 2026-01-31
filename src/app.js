@@ -1,23 +1,18 @@
 const express = require("express");
-const {adminAuth, userAuth} = require('../middlewares/auth.js')
+const connectDB = require("./config/database.js");
 const app = express();
 
+connectDB().then(()=>{
+    console.log("Database Connection established...");
+    app.listen(3000,()=>{
+        console.log("server is successfully listening on port-3000");
+    });
+})
+.catch((err)=>{
+    console.error("Database cannot be connected!!!");
+    process.exit(1)
+})
 
-app.get('/getUserData',(req,res)=>{
-    try{
-        throw new Error("nfnfkdggkfd");
-        res.send("User Data send");
-    }catch(err){
-        res.status(500).send("Some error contact support team");
-    }
-});
 
-app.use("/",(err, req, res ,next)=>{
-    if(err){
-        res.status(500).send("Error in the Code....")
-    }
-});
 
-app.listen(3000,()=>{
-    console.log("server is successfully listening on port-3000");
-});
+

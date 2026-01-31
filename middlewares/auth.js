@@ -1,5 +1,5 @@
 const adminAuth = (req, res, next)=>{
-    console.log("Admin auth is getting checked!!");
+    // console.log("Admin auth is getting checked!!");
     const token = "xyz";
     const isAdminAuthorized = token ==="xyz";
     if(!isAdminAuthorized){
@@ -10,7 +10,7 @@ const adminAuth = (req, res, next)=>{
 }
 
 const userAuth = (req,res,next)=>{
-    console.log("User auth getting checked");
+    // console.log("User auth getting checked");
     const token = "PQR";
     const isUserAuthorized = token ==="PQR";
     if(!isUserAuthorized){
