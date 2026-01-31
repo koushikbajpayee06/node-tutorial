@@ -26,9 +26,69 @@ app.post('/signup',async(req,res)=>{
     }catch(err){
         res.status(500).json("Something went wrong");
     }
+});
+
+app.get('/user',async(req,res)=>{
+    const userEmail = req.body.emailId;
+    try{
+        const user = await User.find({emailId: userEmail});
+        if(user.length === 0){
+            res.status(404).send("User not found");
+        }
+        res.send(user);
+    }catch(err){
+        res.status(400).send("Something went wrong");
+    }
     
 })
+app.get('/feed',async(req,res)=>{
+    try{
+        const data = await User.find({});
+        if(!data){
+            res.status(404).json({message:"no data found.."})
+        }else{
+            res.status(200).json(data);
+        }
+    }catch(err){
+        res.status(404).json('Somthing went wrong');
+    }
 
+});
+app.get('/user/:id', async(req,res)=>{
+    const {id} = req.params;
+    // console.log(id)
+    try{
+        const user = await User.findById(id).select('-password');;
+        if(!user){
+            res.status(404).json({message: "User id not found"});
+        }
+        res.status(200).json(user)
+    }catch(err){
+         res.status(500).json({ message: "Invalid user id" });
+    }
+});
+app.delete('/user/:id', async(req,res)=>{
+    const { id } = req.params;
+    try{
+        const user = await User.findByIdAndDelete(id);
+        if(!user){
+            res.status(400).json({message:"User deleted successfully"});
+        }
+        res.status(200).json({message:"user deleted successfully",user})
+    }catch(err){
+        res.status(500).json({message:"something went wrong"});
+    }
+});
+app.patch('/user/:id', async(req,res)=>{
+    const {id} = req.params;
+    const data = req.body;
+    try{
+        const user = await User.findByIdAndUpdate(id,data)
+        res.send("User updated successsfully")
+    }catch(err){
+        res.status(400).send("Somthing went wrong...")
+    }
+})
 
 connectDB().then(()=>{
     console.log("Database Connection established...");
