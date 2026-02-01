@@ -44,13 +44,25 @@
 - Error handling using try catch.
 
 - JS Object vs JSON(difference)
-- Add the express.json middleware to your app
-- Make your signup API dynamic to recive from the end user
-- User.findOne with duplicate email ids, which one will returned
-- API get user by email
-- API - Feed API - GET/feed - get al the users from the database
-- Create a Delete user API
-- Difference between PATCH and PUT API
+- Add the express.json middleware to your app.
+- Make your signup API dynamic to recive from the end user.
+- User.findOne with duplicate email ids, which one will returned.
+- API get user by email.
+- API - Feed API - GET/feed - get al the users from the database.
+- Create a Delete user API.
+- Difference between PATCH and PUT API.
+- API - Update a user.
+- Explore the mongoose Documents for Model methods.
+- What are options in a Model.findOneAndUpdate method, explore more about it
+- API - Update the user API with email Id.
+
+# Day -07
+- Explore schematype options from the documentation
+- add required, unique, lowercase, min, minLength, trim
+- Add default
+- Create a custom validation function for gender
+- Improve the DB schema - PUT all appropiate validations on each field in Schema
+- Add timestamp to the userSchema
 - 
 
 
