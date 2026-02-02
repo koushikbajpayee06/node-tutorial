@@ -2,32 +2,33 @@ const express = require("express");
 const connectDB = require("./config/database.js");
 const app = express();
 const User = require("./models/user.js");
+const {validateSignUpData} = require('./utils/validation.js');
+const bcrypt = require('bcrypt');
 app.use(express.json());
 
 app.post("/signup", async (req, res) => {
   console.log(req.body);
   try {
-    const { firstName, lastName, emailId, password, gender, age, skills } = req.body;
-
-    if (!firstName | !lastName | !emailId | !password) {
-      return res.status(404).json({ message: "All field required" });
-    }
+    validateSignUpData(req.body);
+    const { firstName, lastName, emailId, password, gender, age, skills } = req.body; 
     const userEmail = await User.findOne({ emailId });
     if (userEmail) {
-      return res.status(404).json({ message: "userEmail already exists" });
+      return res.status(409).json({ message: "userEmail already exists" });
     }
+   
+    const passwordHash = await bcrypt.hash(password, 10);
+    console.log(passwordHash);
+    
+
     const user = await User.create({
       firstName,
       lastName,
       emailId,
-      password,
-      gender,
-      age,
-      skills,
+      password:passwordHash,
     });
-    res.status(200).send({ message: "User registered succesfully", user });
+    res.status(200).send("Registration successfull");
   } catch (err) {
-    res.status(500).json("SIGNUP FAILED"+err.message);
+    res.status(500).json("SIGNUP FAILED: "+err.message);
   }
 });
 
