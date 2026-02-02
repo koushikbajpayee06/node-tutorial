@@ -7,24 +7,27 @@ app.use(express.json());
 app.post("/signup", async (req, res) => {
   console.log(req.body);
   try {
-    const { firstName, lastName, emailId, password } = req.body;
+    const { firstName, lastName, emailId, password, gender, age, skills } = req.body;
 
     if (!firstName | !lastName | !emailId | !password) {
-      res.status(404).json({ message: "All field required" });
+      return res.status(404).json({ message: "All field required" });
     }
     const userEmail = await User.findOne({ emailId });
     if (userEmail) {
-      res.status(404).json({ message: "userEmail already exists" });
+      return res.status(404).json({ message: "userEmail already exists" });
     }
     const user = await User.create({
       firstName,
       lastName,
       emailId,
       password,
+      gender,
+      age,
+      skills,
     });
     res.status(200).send({ message: "User registered succesfully", user });
   } catch (err) {
-    res.status(500).json("Something went wrong");
+    res.status(500).json("SIGNUP FAILED"+err.message);
   }
 });
 
@@ -105,7 +108,7 @@ app.patch("/user/:id", async (req, res) => {
       user,
     });
   } catch (err) {
-    res.status(500).json({ message: "Somthing went wrong..." });
+    res.status(500).json("UPDATE FAILED"+ err.message);
   }
 });
 

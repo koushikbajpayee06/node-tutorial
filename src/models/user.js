@@ -5,14 +5,18 @@ const userSchema = new Schema({
     firstName:{
         type:String,
         required:true,
+        minLength:4,
+        maxLength:50
     },
     lastName:{
-        type:String
+        type:String,
     },
     emailId:{
         type:String,
         required:true,
-        unique:true
+        unique:true,
+        lowercase:true,
+        trim:true
     },
     password:{
         type:String,
@@ -20,20 +24,29 @@ const userSchema = new Schema({
     },
     age:{
         type:Number,
+        min:18,
     },
     gender:{
-        type:String
+        type:String,
+        validate(value){
+            if(!["male","female","others"].includes(value)){
+                throw new Error("Gender data is not valid");
+            }
+        }
     },
     photoUrl:{
-        type:String
+        type:String,
+        default:"https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png"
     },
     about:{
         type:String,
-        default:"This is a default about of user"
+        default:"This is a default about of the user"
     },
     skills:{
         type:[String]
     }
+},{
+    timestamps:true
 })
 
 const User = mongoose.model("User",userSchema);
