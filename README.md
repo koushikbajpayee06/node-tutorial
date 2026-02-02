@@ -68,4 +68,9 @@
 - Install validator
 - Explore validator library function and use validator function for password, email,url
 
+# Day-08
+- Validate data in signup API
+- Install bcrypt package
+- Create passwordHash using bcrypt.hash & save the user with bcrupted password
+
 
