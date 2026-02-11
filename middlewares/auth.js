@@ -1,7 +1,7 @@
 var cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 
-const User = require("../models/user.js");
+const User = require("../src/models/user.js");
 
 const jwtAuth = async (req,res,next)=>{
    try{
@@ -16,8 +16,8 @@ const jwtAuth = async (req,res,next)=>{
         throw new Error("User does not exist");
         }
         // console.log("Logged In user is: " +user.firstName+ ' '+ user.lastName);
-        req.user = user
-        next()
+        req.user = user;
+        next();
    }catch(err){
     res.status(404).send("Somthing went wrong"+err.message);
    }

@@ -6,7 +6,7 @@ const {validateSignUpData} = require('./utils/validation.js');
 const bcrypt = require('bcrypt');
 var cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
-const {jwtAuth} = require("../middlewares/auth.js")
+const {jwtAuth, userAuth} = require("../middlewares/auth.js")
 
 
 app.use(express.json());
@@ -49,7 +49,7 @@ app.post('/login',async(req,res)=>{
     // console.log(user.password)
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if(isPasswordValid){
-      const token = await jwt.sign({_id:user._id}, "DEV@Tinder$790");
+      const token = await jwt.sign({_id:user._id}, "DEV@Tinder$790", {expiresIn:"1d"});
       //console.log(token);
       res.cookie("token",token);
       res.status(200).send("Login successfull")
@@ -68,6 +68,10 @@ app.get('/profile', jwtAuth, async(req,res)=>{
   res.status(200).send(user)
 })
 
+app.post('/sendConnectionRequest',jwtAuth, async(req,res)=>{
+  const user = req.user;
+  res.send(user.firstName + " send connection request")
+})
 
 connectDB()
   .then(() => {
