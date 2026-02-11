@@ -3,7 +3,6 @@ const authRouter = express.Router();
 const {validateSignUpData} = require('../utils/validation.js');
 const User = require("../models/user.js");
 const bcrypt = require('bcrypt');
-
 const jwt = require('jsonwebtoken');
 const {jwtAuth, userAuth} = require("../../middlewares/auth.js")
 
@@ -30,6 +29,7 @@ authRouter.post("/signup", async (req, res) => {
     res.status(500).json("SIGNUP FAILED: "+err.message);
   }
 });
+
 authRouter.post('/login',async(req,res)=>{
   try{
     const { emailId, password} = req.body;
@@ -50,11 +50,17 @@ authRouter.post('/login',async(req,res)=>{
       res.status(200).send("Login successfull")
     }else{
       throw new Error("Invalid Credentials");
-    }
-    
-    
+    }  
   }catch(err){
     res.status(500).send("something went wrong"+ err.message)
   }
+});
+
+authRouter.post('/logout',async(req,res)=>{
+    res.cookie("token",null,{
+        expires: new Date(Date.now()),
+    });
+
+    res.send("Logout Succesfull !!!")
 })
 module.exports = authRouter;
