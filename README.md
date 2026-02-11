@@ -1,4 +1,4 @@
-# Day-03
+## Day-03
 - Create a repository
 - Initilizethe repository
 - node_modules, package.json, package-lock.json
@@ -11,7 +11,7 @@
 - What is the use of "-g" while npm install
 - Difference between caret and tilde (^ vs ~)
 
-# Day-04 
+## Day-04 
 - Initilize  git
 - .gitignore
 - Create a remote repo on github
@@ -20,7 +20,7 @@
 - Order of the routes matter a lot
 - Install Postman app and make a workspace/collection > test API call
 
-# Day-05
+## Day-05
 - Multiple Route Handlers - Play with the code
 - next()
 - next function and errors along with res.send()
@@ -32,7 +32,7 @@
 - Write a dummy auth middleware for all user routes, except /user/login
 - Error handling using app.use('/',(err,req,res,next) ={});
 
-# Day-06
+## Day-06
 - koushikbajpayee06@gmail.com(MongoDB Connection)
 - Create a free cluster on MongoDB official website(Mongo Atlas)
 - Install mongoose library
@@ -56,7 +56,7 @@
 - What are options in a Model.findOneAndUpdate method, explore more about it
 - API - Update the user API with email Id.
 
-# Day -07
+## Day -07
 - Explore schematype options from the documentation
 - add required, unique, lowercase, min, minLength, trim
 - Add default
@@ -68,7 +68,7 @@
 - Install validator
 - Explore validator library function and use validator function for password, email,url
 
-# Day-08
+## Day-08
 - Validate data in signup API
 - Install bcrypt package
 - Create passwordHash using bcrypt.hash & save the user with bcrupted password
@@ -86,3 +86,7 @@
 - create userSchema method to getJWT()
 - Create userSchema method to comparepassword(password)
 
+## Day-09
+- Explore tinder APIs
+- Create a list of all API you can think of Dev Tinder
+- Group Multiple routes under respective routers
