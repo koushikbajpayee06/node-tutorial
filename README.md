@@ -110,3 +110,9 @@
 - Why do we need index in DB?
 - What id the advantages and disadvantages of creating indexes?
 - Read article about compound indexes - https://www.mongodb.com/docs/manual/core/indexes/index-types/index-compound/
+
+## Day-11
+- Write code with proper validation for the API /request/review/:status/:requestId
+- Thought process - POST vs GET.
+- Read about read and populate
+- Create GET / user/requests/received with all the checks
